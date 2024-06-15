@@ -17,7 +17,9 @@ fi
 
 echo ""
 echo ""
-echo "Set local time zone!"
+echo "Set local time zone"
+echo "Configure USB on Pi"
+echo "Name your pi as teslapiwifi
 echo "=========================================================="
 echo ""
 echo ""
@@ -28,6 +30,8 @@ timedatectl set-timezone "Europe/Paris"
 echo "dtoverlay=dwc2" >> /boot/firmware/config.txt
 echo "dwc2" >> /etc/modules
 
+#Name your pi
+echo "teslapiwifi" > /etc/hostname
 
 echo ""
 echo ""
