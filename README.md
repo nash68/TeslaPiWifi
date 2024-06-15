@@ -41,9 +41,9 @@ If you need more details to configure your file, have a look at https://linux.di
 Now you can log on your pi Zero. 
 Downloade this script : 
 
-_wget https://raw.githubusercontent.com/omiq/piusb/main/setup.sh -O setup.sh_
-
-_chmod +x setup.sh_
+  _wget https://raw.githubusercontent.com/omiq/piusb/main/setup.sh -O setup.sh_
+  _chmod +x setup.sh_
+  _chmod ./setup.sh_
 
 Before running it, please adapt it to your configuration (mainly the size of your card) :
 _nano setup.sh_
