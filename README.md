@@ -42,22 +42,26 @@ Now you can log on your pi Zero.
 Downloade this script : 
 
   _wget https://raw.githubusercontent.com/omiq/piusb/main/setup.sh -O setup.sh_
+  
   _chmod +x setup.sh_
-  _chmod ./setup.sh_
+  
+
+  
 
 Before running it, please adapt it to your configuration (mainly the size of your card) :
 _nano setup.sh_
 
 then Go !
 
-# sudo ./setup.sh
+  _sudo ./setup.sh__
 
 After the reboot, you should see a news sdcard on your computer.
 Just plug it now on your Tesla instead of your current usb drive.
 
 Try to store some video the Tesla, then connect to the Pi with WinSCP.
 
-To refresh the content of the 
+To refresh the content of the scard (ie when the files are not visible under Winscp), you can run the refresh script : 
+  _sudo ./refresh.sh__
 
 
 Based on several original source code like those ones : 
