@@ -14,6 +14,13 @@ if [[ $EUID -ne 0 ]]; then
     echo ""
     exit
 fi
+
+echo ""
+echo ""
+echo "Set local time zone!"
+echo "=========================================================="
+echo ""
+echo ""
 #Put your local timezone
 timedatectl set-timezone "Europe/Paris"
 
@@ -60,32 +67,6 @@ echo ""
 echo "Installing dependencies"
 echo "=========================================================="
 echo ""
-#apt-get install python3 -y
-
-
-# Share
-echo ""
-echo "Creating share"
-echo "=========================================================="
-echo ""
-echo "[usbstick]" >> /etc/samba/smb.conf
-echo "browseable = yes" >> /etc/samba/smb.conf
-echo "path = /mnt/usbstick" >> /etc/samba/smb.conf
-echo "guest ok = yes" >> /etc/samba/smb.conf
-echo "read only = no" >> /etc/samba/smb.conf
-echo "create mask = 0777" >> /etc/samba/smb.conf
-echo "comment = PiUSB" >> /etc/samba/smb.conf
-echo "public = yes" >> /etc/samba/smb.conf
-echo "only guest = yes" >> /etc/samba/smb.conf
-echo "browseable = yes" >> /etc/samba/smb.conf
-echo "directory mask = 0755" >> /etc/samba/smb.conf
-echo "force create mask = 0777" >> /etc/samba/smb.conf
-echo "force directory mask = 0755" >> /etc/samba/smb.conf
-echo "force user = root" >> /etc/samba/smb.conf
-echo "force group = root" >> /etc/samba/smb.conf
-echo "kernel oplocks = yes" >> /etc/samba/smb.conf
-echo "oplocks = False" >> /etc/samba/smb.conf
-systemctl restart smbd.service
 
 # Refesh, remount script
 echo ""
@@ -104,6 +85,7 @@ sudo chmod +x refreshpiusb.sh
 # Run on boot
 sed -i '$d' /etc/rc.local
 echo "sudo /refreshpiusb.sh" >> /etc/rc.local
+echo "" >> /etc/rc.local
 
 # Fin?
 echo ""
