@@ -40,6 +40,7 @@ If you need more details to configure your file, have a look at https://linux.di
 
 Now you can log on your pi Zero. 
 Downloade this script : 
+
 _wget https://raw.githubusercontent.com/omiq/piusb/main/setup.sh -O setup.sh_
 _chmod +x setup.sh_
 
