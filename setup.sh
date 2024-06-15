@@ -67,11 +67,16 @@ echo "/piusb.bin /mnt/usbstick vfat rw,users,user,exec,umask=000 0 0" >> /etc/fs
 mount -a
 sudo modprobe g_mass_storage file=/piusb.bin stall=0 ro=0
 
+
 # Dependencies
 echo ""
 echo "Installing dependencies"
 echo "=========================================================="
 echo ""
+apt-get install python3 -y
+apt-get install python3-pip -y
+#apt-get install winbind -y
+apt install python3-watchdog -y
 
 # Refesh, remount script
 echo ""
@@ -86,10 +91,24 @@ echo "modprobe g_mass_storage file=/piusb.bin stall=0 ro=0" >> refreshpiusb.sh
 echo "sync" >> refreshpiusb.sh
 sudo chmod +x refreshpiusb.sh
 
+# Watchdog
+echo ""
+echo "Setting up watchdog"
+echo "=========================================================="
+echo ""
+wget https://raw.githubusercontent.com/omiq/piusb/main/usb_share_watchdog.py -O usb_share_watchdog.py
+cp usb_share_watchdog.py /usr/local/share/
+chmod +x /usr/local/share/usb_share_watchdog.py
 
 # Run on boot
 sed -i '$d' /etc/rc.local
-echo "sudo /refreshpiusb.sh" >> /etc/rc.local
+echo "sudo /usr/bin/python3 /usr/local/share/usb_share_watchdog.py &" >> /etc/rc.local
+/usr/bin/python3 /usr/local/share/usb_share_watchdog.py &
+
+
+# Run on boot
+sed -i '$d' /etc/rc.local
+echo "sudo ~/refreshpiusb.sh" >> /etc/rc.local
 echo "" >> /etc/rc.local
 
 # Fin?
