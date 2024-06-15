@@ -31,6 +31,7 @@ echo "dtoverlay=dwc2" >> /boot/firmware/config.txt
 echo "dwc2" >> /etc/modules
 
 #Name your pi
+sed -i "s/$(hostname)/teslapiwifi/" /etc/hosts
 echo "teslapiwifi" > /etc/hostname
 
 echo ""
